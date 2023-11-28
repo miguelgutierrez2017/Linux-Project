@@ -22,11 +22,12 @@ def search_record():
 
 
 # add record to file
-def add_to_file(id, name, phone):
+def add_to_file(name, species, origin):
     if not os.path.isfile("contact_database_python.dat"):
         print("Cannot Open File:")  # conveys error message
         sys.exit()
-    rcd = id + " " + name + " " + phone
+
+    rcd = name + " " + species + " " + origin
     filehandle_w = open("contact_database_python.dat", "a")
     filehandle_w.write("\n")
     filehandle_w.write(rcd)
@@ -48,19 +49,19 @@ def show_record():
 
 # add function
 def add_record():
-    id = input("please enter id -> ")
-    while not id.isnumeric():  # check if number
-        id = input("please enter id -> ")
-
-    name = input("please enter name -> ")
+    name = input("please enter name of Champion -> ")
     while name.isnumeric():  # check if number
-        name = input("please enter name -> ")
+        name = input("please enter name of Champion -> ")
 
-    phone = input("please enter phone -> ")
-    while not phone.isnumeric():  # check if number
-        phone = input("please enter phone -> ")
+    species = input("please enter species -> ")
+    while species.isnumeric():  # check if number
+        species = input("please enter species -> ")
 
-    add_to_file(id, name, phone)
+    origin = input("please enter origin -> ")
+    while origin.isnumeric():  # check if number
+        origin = input("please enter origin -> ")
+
+    add_to_file(name, species, origin)
     print("record added! displaying records: ")
     show_record()
 
@@ -92,4 +93,5 @@ while choice != 5:  # loop as long as choice is not equal to 5
         modify_record()
     else:
         sys.exit("Wrong choice exiting......")
-choice = int(input("what else would you like to do, make a choice -> "))
+
+    choice = int(input("what else would you like to do, make a choice -> "))
